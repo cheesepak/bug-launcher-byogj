@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://boatju1r2ikwe"]
+
+[ext_resource type="PackedScene" uid="uid://who70pqymrxb" path="res://test.tscn" id="1_u52ul"]
+
+[node name="Level" type="Node" unique_id=813148733]
+
+[node name="Terrain" type="StaticBody2D" parent="." unique_id=743576771]
+position = Vector2(495, 310)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain" unique_id=1033639337]
+polygon = PackedVector2Array(-347, -120, -122, -162, -264, 144, -144, 174, -94, 57, 137, 88, 121, 323, 370, 207, 333, -2, 483, -37, 448, -204, 595, -169, 654, -314, 652, 341, -494, 340, -496, -311)
+
+[node name="test" parent="." unique_id=43395963 instance=ExtResource("1_u52ul")]
+position = Vector2(863, 80)
