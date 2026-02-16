@@ -1,3 +1,32 @@
 [gd_scene format=3 uid="uid://bri6mhptbj7je"]
 
+[ext_resource type="Script" uid="uid://cbleo5y71lbb3" path="res://shop.gd" id="1_viryw"]
+
 [node name="Shop" type="Node" unique_id=1039736518]
+script = ExtResource("1_viryw")
+
+[node name="ShopPlaceholderLabel" type="Label" parent="." unique_id=1326490075]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_right = 84.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "Shop"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=1982658854]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -75.0
+offset_right = 66.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
