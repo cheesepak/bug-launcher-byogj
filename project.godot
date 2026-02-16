@@ -11,9 +11,20 @@ config_version=5
 [application]
 
 config/name="byo2026"
-run/main_scene="uid://boatju1r2ikwe"
+run/main_scene="uid://bdrcpslc476vw"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="uid://dsyd8b8msts5s"
 
 [physics]
 
