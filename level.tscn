@@ -1,14 +1,73 @@
 [gd_scene format=3 uid="uid://boatju1r2ikwe"]
 
+[ext_resource type="Script" uid="uid://d7p56mj2n552" path="res://level.gd" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://who70pqymrxb" path="res://test.tscn" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://b44d4perlvun6" path="res://terrain.gd" id="1_vonw3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oi3di"]
+friction = 0.59
+bounce = 0.25
+absorbent = true
+
+[sub_resource type="Curve2D" id="Curve2D_oi3di"]
+bake_interval = 50.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -508, 239, -93.38843, 4.9586773, 93.38843, -4.9586773, -405, 730, -57.85124, 47.93388, 57.85124, -47.93388, 133, 711, -24.793386, 47.93388, 24.793386, -47.93388, 422, 670, -15.305061, 5.1281424, 15.305061, -5.1281424, 590, 385, 0, 0, 0, 0, 614, 388, -18.185535, -5.6881247, 18.185535, 5.6881247, 643, 386, -19.008263, -52.066113, 19.008263, 52.066113, 686, 509, -35.53719, 14.049586, 35.53719, -14.049586, 812, 655, -70.32532, -2.634286, 70.32532, 2.634286, 905, 559, -180.0615, 6.4307632, 180.0615, -6.4307632, 1205, 679, -203.64098, 120.04099, 203.64098, -120.04099, 1422, -46, -207.92816, 182.2051, 207.92816, -182.2051, 1952, -215, -347.26147, -8.574357, 347.26147, 8.574357, 2904, -743, -282.43362, 59.659367, 282.43362, -59.659367, 3757, -577, -156.48201, -214.35893, 156.48201, 214.35893, 4638, -132, -55.733322, 276.523, 55.733322, -276.523, 5916, -193, -56.810753, 11.273572, 56.810753, -11.273572, 6724, -1521, -83.74653, 6.442041, 83.74653, -6.442041, 6938, -1516, -370.84094, 38.584606, 370.84094, -38.584606, 8042, 16, -90.03075, -10.717946, 90.03075, 10.717946, 8298, -731, -285.09738, -2.1435893, 285.09738, 2.1435893, 8661, -301, -334.39993, -64.30768, 334.39993, 64.30768, 9253, -792, -227.22046, 130.75894, 227.22046, -130.75894, 10491, -2036, -216.50252, -156.48201, 216.50252, 156.48201, 11668, -1182, -745.96906, -23.579481, 745.96906, 23.579481, 14144, -3019, 471.58963, 53.589733, -471.58963, -53.589733, 15079, -1579, 293.67172, -216.50252, -293.67172, 216.50252, 14420, -973, -688.09216, 220.78969, 688.09216, -220.78969, 14951, 244, -713.81525, 15.005125, 713.81525, -15.005125, 18140, 587, -113.61023, 36.441017, 113.61023, -36.441017, 19035, 264, 0, 0, 0, 0, 19560, 244, 0, 0, 0, 0, 19519, 715, 0, 0, 0, 0, -515, 799, 0, 0, 0, 0, -515, 741, 0, 0, 0, 0, -508, 239)
+}
+point_count = 36
 
 [node name="Level" type="Node" unique_id=813148733]
+script = ExtResource("1_oi3di")
 
-[node name="Terrain" type="StaticBody2D" parent="." unique_id=743576771]
-position = Vector2(495, 310)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain" unique_id=1033639337]
-polygon = PackedVector2Array(-347, -120, -122, -162, -264, 144, -144, 174, -94, 57, 137, 88, 121, 323, 370, 207, 333, -2, 483, -37, 448, -204, 595, -169, 654, -314, 652, 341, -494, 340, -496, -311)
+[node name="launches" type="Node" parent="." unique_id=1228187693]
 
 [node name="test" parent="." unique_id=43395963 instance=ExtResource("1_u52ul")]
-position = Vector2(863, 80)
+position = Vector2(1115, 632)
+
+[node name="test2" parent="." unique_id=1983353501 instance=ExtResource("1_u52ul")]
+position = Vector2(1115, 510)
+
+[node name="test3" parent="." unique_id=913410141 instance=ExtResource("1_u52ul")]
+position = Vector2(7374, -1276)
+
+[node name="test4" parent="." unique_id=1217858261 instance=ExtResource("1_u52ul")]
+position = Vector2(12283, -977)
+
+[node name="test5" parent="." unique_id=1508815591 instance=ExtResource("1_u52ul")]
+position = Vector2(12114, -1031)
+
+[node name="test6" parent="." unique_id=112497208 instance=ExtResource("1_u52ul")]
+position = Vector2(12262, -1152)
+
+[node name="Terrain" type="StaticBody2D" parent="." unique_id=743576771]
+z_index = 1
+position = Vector2(495, 310)
+physics_material_override = SubResource("PhysicsMaterial_oi3di")
+script = ExtResource("1_vonw3")
+
+[node name="BaseShape" type="Path2D" parent="Terrain" unique_id=859498971]
+position = Vector2(4, -3)
+curve = SubResource("Curve2D_oi3di")
+
+[node name="Outline" type="Line2D" parent="Terrain" unique_id=2042364328]
+closed = true
+width = 20.0
+default_color = Color(1, 0.6156863, 0, 1)
+
+[node name="FillPolygon" type="Polygon2D" parent="Terrain" unique_id=821553805]
+color = Color(1, 0.8745098, 0, 1)
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="Terrain" unique_id=1033639337]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=507919757]
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="BestMarker" type="Line2D" parent="." unique_id=747872921]
+visible = false
+position = Vector2(0, -100000)
+scale = Vector2(1, 100)
+points = PackedVector2Array(-2, 1072, -2, -1966)
+width = 5.0
+default_color = Color(0.56078434, 0.7764706, 0.20392157, 1)
+joint_mode = 2

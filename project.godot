@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="byo2026"
-run/main_scene="uid://bdrcpslc476vw"
+run/main_scene="uid://boatju1r2ikwe"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,13 @@ window/stretch/aspect="expand"
 [gui]
 
 theme/custom="uid://dsyd8b8msts5s"
+
+[input]
+
+Left_Click={
+"deadzone": 0.2,
+"events": []
+}
 
 [physics]
 

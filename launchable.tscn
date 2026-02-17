@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://db8ynocs3uc2t"]
+
+[ext_resource type="Script" uid="uid://cclocqoy4siu1" path="res://launchable.gd" id="1_q6f6b"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q6f6b"]
+rough = true
+bounce = 0.66
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ggml"]
+radius = 33.13608
+
+[node name="Launchable" type="RigidBody2D" unique_id=2023449435]
+input_pickable = true
+mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_q6f6b")
+freeze = true
+script = ExtResource("1_q6f6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1791300596]
+shape = SubResource("CircleShape2D_2ggml")
+
+[node name="TempGraphic" type="Polygon2D" parent="." unique_id=491997690]
+color = Color(0, 0.06666667, 0.11764706, 1)
+polygon = PackedVector2Array(0, -33, 9, -32, 18, -28, 25, -22, 29, -16, 32, -8, 70, -1, 32, 7, 29, 16, 23, 24, 16, 29, 8, 32, 0, 33, -9, 32, -17, 29, -24, 24, -29, 17, -32, 9, -34, 0, -32, -10, -28, -18, -23, -24, -17, -29, -9, -32)
+
+[node name="Meter" type="Polygon2D" parent="." unique_id=1353589702]
+visible = false
+position = Vector2(-45, 0)
+color = Color(0.88235295, 0.1764706, 0.09019608, 1)
+offset = Vector2(35, 0)
+polygon = PackedVector2Array(-35, -9, -35, 8, -37, 8, -37, -9)

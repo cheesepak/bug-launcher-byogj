@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://db8ynocs3uc2t"]
+
+[ext_resource type="Script" uid="uid://cclocqoy4siu1" path="res://launchable.gd" id="1_q6f6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ggml"]
+radius = 33.13608
+
+[node name="Launchable" type="RigidBody2D" unique_id=2023449435]
+input_pickable = true
+freeze = true
+script = ExtResource("1_q6f6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1791300596]
+shape = SubResource("CircleShape2D_2ggml")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=491997690]
+color = Color(0, 0.06666667, 0.11764706, 1)
+polygon = PackedVector2Array(0, -33, 9, -32, 18, -28, 25, -22, 28, -17, 32, -8, 70, -1, 32, 7, 29, 16, 23, 23, 16, 29, 7, 32, 0, 33, -9, 32, -17, 29, -22, 24, -29, 17, -32, 8, -34, 0, -33, -9, -29, -17, -23, -24, -17, -28, -9, -32)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

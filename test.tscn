@@ -7,6 +7,8 @@
 size = Vector2(122, 122)
 
 [node name="test" type="RigidBody2D" unique_id=43395963]
+mass = 0.336
+sleeping = true
 script = ExtResource("1_8uh7m")
 
 [node name="Button" type="Button" parent="." unique_id=1629072319]
