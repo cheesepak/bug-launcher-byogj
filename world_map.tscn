@@ -1,3 +1,48 @@
 [gd_scene format=3 uid="uid://0wpnh1kalhmd"]
 
+[ext_resource type="Script" uid="uid://c88kxbnxr2pim" path="res://world_map.gd" id="1_r63r8"]
+
 [node name="WorldMap" type="Node" unique_id=1549927153]
+script = ExtResource("1_r63r8")
+
+[node name="WorldMapPlaceholderLabel" type="Label" parent="." unique_id=1862800830]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_right = 84.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "World Map"
+horizontal_alignment = 1
+
+[node name="Level1Button" type="Button" parent="." unique_id=2032484828]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -160.0
+offset_right = 156.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY LEVEL 1"
+
+[node name="ShopButton" type="Button" parent="." unique_id=1323348915]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SHOP"
+
+[connection signal="pressed" from="Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

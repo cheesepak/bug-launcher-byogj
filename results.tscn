@@ -1,3 +1,14 @@
 [gd_scene format=3 uid="uid://dupnpgwvgbb1u"]
 
 [node name="Results" type="Node" unique_id=1113489725]
+
+[node name="ResultsPlaceholderLabel" type="Label" parent="." unique_id=2492445]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_right = 84.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "Results"
+horizontal_alignment = 1
