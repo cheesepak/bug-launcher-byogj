@@ -21,12 +21,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nageh"]
 radius = 51.10773
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nageh"]
-size = Vector2(49, 4)
-
-[node name="Flower" type="RigidBody2D" unique_id=442460921]
-collision_layer = 0
-collision_mask = 2
+[node name="Flower" type="Node2D" unique_id=775267365]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=415883195]
 scale = Vector2(0.5, 0.5)
@@ -44,7 +39,3 @@ position = Vector2(-1, 3.8146973e-05)
 rotation = 1.5707964
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_nageh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2015874635]
-position = Vector2(1.5, -2)
-shape = SubResource("RectangleShape2D_nageh")

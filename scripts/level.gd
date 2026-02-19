@@ -2,6 +2,7 @@ extends Node
 
 var spawn_coords = Vector2(350,800)
 var Launchable = load("res://launchable.tscn")
+var Flower = load("res://flower.tscn")
 var current_launch
 var done_launches = []
 var current_zoom = 1
@@ -24,6 +25,13 @@ func update_best_mark():
 func _ready():
 	spawn_launchable()
 	$GoalMarker.position.x = goal_dist
+	#spawn collidables
+	var terrain = $Terrain/BaseShape.curve
+	var terrain_length = terrain.get_baked_length()
+	for i in range(100):
+		var flower = Flower.instantiate()
+		flower.position = $Terrain.position + terrain.sample_baked(randf() * terrain_length)
+		add_child(flower)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

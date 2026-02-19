@@ -13,5 +13,5 @@ func _on_body_entered(body):
 			body.linear_velocity.y -= boost * 150
 			var delta = body.position - global_position
 			body.linear_velocity += delta.normalized() * boost * 50
-			$Compass.rotation = delta.angle()
-			print("delta: ", delta.angle())
+			#$Compass.rotation = delta.angle()
+			#print("delta: ", delta.angle())
