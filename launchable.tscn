@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://db8ynocs3uc2t"]
 
-[ext_resource type="Script" uid="uid://cclocqoy4siu1" path="res://launchable.gd" id="1_q6f6b"]
+[ext_resource type="Script" uid="uid://cclocqoy4siu1" path="res://scripts/launchable.gd" id="1_q6f6b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q6f6b"]
 rough = true
@@ -29,3 +29,5 @@ position = Vector2(-45, 0)
 color = Color(0.88235295, 0.1764706, 0.09019608, 1)
 offset = Vector2(35, 0)
 polygon = PackedVector2Array(-35, -9, -35, 8, -37, 8, -37, -9)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

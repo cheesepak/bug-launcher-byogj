@@ -1,13 +1,15 @@
 extends RigidBody2D
+class_name Launchable
 
 var launched = false
 var launch_power = 0.0
-var max_launch_power = 1500.0
+var max_launch_power = 500.0
 var mouse_th = 100
 var mouse_pos = Vector2.ZERO
 var armed = false
 var hover = false
 var done = false
+var is_current_launch = true
 
 signal im_done
 
@@ -32,10 +34,11 @@ func _process(delta):
 			launch_power = launch_power + 1 + launch_power * delta * 3
 			if launch_power>max_launch_power * 1.8: launch_power = 0.0
 			#print(launch_power)
-			$Meter.scale.x = min(launch_power,max_launch_power)/20
+			$Meter.scale.x = min(launch_power,max_launch_power) * 50 / max_launch_power
 	elif launched and not done:
 		if linear_velocity.length()<.1 or sleeping:
 			sleeping = true
+			is_current_launch = false
 			done = true
 			#mass = 1
 	

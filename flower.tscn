@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://86tf08nr3lb1"]
+
+[ext_resource type="Texture2D" uid="uid://c6bu4dxivthn" path="res://gfx/flowersheet1.png" id="2_511j0"]
+[ext_resource type="PackedScene" uid="uid://hin6a4yh1qv2" path="res://collidable_component.tscn" id="2_nageh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r72as"]
+atlas = ExtResource("2_511j0")
+region = Rect2(0, 0, 200, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cd1mw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r72as")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nageh"]
+radius = 51.10773
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nageh"]
+size = Vector2(49, 4)
+
+[node name="Flower" type="RigidBody2D" unique_id=442460921]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=415883195]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_cd1mw")
+offset = Vector2(2, -150)
+
+[node name="CollidableComponent" parent="." unique_id=703530382 instance=ExtResource("2_nageh")]
+position = Vector2(0, -97)
+boost = 10.0
+pollen = 10
+nectar = 10
+
+[node name="Hitbox" type="CollisionShape2D" parent="CollidableComponent" unique_id=1700465065]
+position = Vector2(-1, 3.8146973e-05)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_nageh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2015874635]
+position = Vector2(1.5, -2)
+shape = SubResource("RectangleShape2D_nageh")

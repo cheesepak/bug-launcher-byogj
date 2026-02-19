@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://hin6a4yh1qv2"]
+
+[ext_resource type="Script" uid="uid://bqmebve5mxwbf" path="res://scripts/collidable_component.gd" id="1_nwbqk"]
+
+[node name="CollidableComponent" type="Area2D" unique_id=703530382]
+script = ExtResource("1_nwbqk")
+
+[node name="Compass" type="Polygon2D" parent="." unique_id=305030905]
+position = Vector2(1, 0)
+offset = Vector2(-48, 81)
+polygon = PackedVector2Array(40.5, -88, 70.5, -81, 40.5, -74, 47.5, -81)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
