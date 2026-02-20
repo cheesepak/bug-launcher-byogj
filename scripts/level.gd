@@ -7,7 +7,7 @@ var current_launch
 var done_launches = []
 var current_zoom = 1
 var best_dist = 0
-var goal_dist = 10000
+var goal_dist = 20000
 
 func spawn_launchable():
 	current_launch = Launchable.instantiate()
@@ -30,8 +30,7 @@ func _ready():
 	var terrain_length = terrain.get_baked_length()
 	for i in range(100):
 		var flower = Flower.instantiate()
-		flower.position = $Terrain.position + terrain.sample_baked(randf() * terrain_length)
-		add_child(flower)
+		$Terrain/BaseShape.add_child(flower)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

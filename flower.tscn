@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://86tf08nr3lb1"]
 
+[ext_resource type="Script" uid="uid://k4v85prens3m" path="res://scripts/flower.gd" id="1_511j0"]
 [ext_resource type="Texture2D" uid="uid://c6bu4dxivthn" path="res://gfx/flowersheet1.png" id="2_511j0"]
 [ext_resource type="PackedScene" uid="uid://hin6a4yh1qv2" path="res://collidable_component.tscn" id="2_nageh"]
 
@@ -21,21 +22,119 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nageh"]
 radius = 51.10773
 
-[node name="Flower" type="Node2D" unique_id=775267365]
+[sub_resource type="Animation" id="Animation_511j0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollidableComponent:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=415883195]
+[sub_resource type="Animation" id="Animation_r72as"]
+resource_name = "Respawn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 200), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"find_new_spot"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollidableComponent:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cd1mw"]
+_data = {
+&"RESET": SubResource("Animation_511j0"),
+&"Respawn": SubResource("Animation_r72as")
+}
+
+[node name="PathFollow2D" type="PathFollow2D" unique_id=1419701169]
+rotates = false
+loop = false
+
+[node name="Flower" type="Node2D" parent="." unique_id=775267365]
+script = ExtResource("1_511j0")
+min_speed = 20.0
+max_speed = 80.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flower" unique_id=415883195]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cd1mw")
 offset = Vector2(2, -150)
 
-[node name="CollidableComponent" parent="." unique_id=703530382 instance=ExtResource("2_nageh")]
+[node name="CollidableComponent" parent="Flower" unique_id=703530382 instance=ExtResource("2_nageh")]
 position = Vector2(0, -97)
 boost = 10.0
 pollen = 10
 nectar = 10
 
-[node name="Hitbox" type="CollisionShape2D" parent="CollidableComponent" unique_id=1700465065]
+[node name="Hitbox" type="CollisionShape2D" parent="Flower/CollidableComponent" unique_id=1700465065]
 position = Vector2(-1, 3.8146973e-05)
 rotation = 1.5707964
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_nageh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flower" unique_id=1016274425]
+libraries/ = SubResource("AnimationLibrary_cd1mw")
+
+[node name="TerrainRay" type="RayCast2D" parent="Flower" unique_id=2008798670]
+position = Vector2(-1, -68)
+target_position = Vector2(0, 159)
+
+[node name="Label" type="Label" parent="Flower" unique_id=1940349485]
+visible = false
+offset_left = -51.0
+offset_top = -70.0
+offset_right = 48.0
+offset_bottom = -25.0
+
+[connection signal="on_hit" from="Flower/CollidableComponent" to="Flower" method="_on_collidable_component_on_hit"]
