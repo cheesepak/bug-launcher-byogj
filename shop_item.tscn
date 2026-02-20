@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://do10xi4fuhwb3"]
+
+[ext_resource type="Texture2D" uid="uid://c2ybned4ai7u6" path="res://gfx/shophexplaceholder.png" id="1_glqc6"]
+[ext_resource type="Script" uid="uid://ds6ug5ohxci1c" path="res://scripts/shop_item.gd" id="1_wxfep"]
+
+[node name="ShopItem" type="Control" unique_id=1382034584 node_paths=PackedStringArray("item_frame")]
+custom_minimum_size = Vector2(229, 196)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -98.0
+offset_right = 114.5
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+script = ExtResource("1_wxfep")
+item_frame = NodePath("ShopItemBG")
+
+[node name="ShopItemBG" type="TextureRect" parent="." unique_id=1851484817]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_glqc6")
+
+[node name="Price" type="Label" parent="ShopItemBG" unique_id=2138826529]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 190.0
+offset_right = 145.0
+offset_bottom = 235.0
+text = "100"
+horizontal_alignment = 1

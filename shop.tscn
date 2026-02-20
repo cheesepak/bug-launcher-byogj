@@ -1,32 +1,53 @@
 [gd_scene format=3 uid="uid://bri6mhptbj7je"]
 
 [ext_resource type="Script" uid="uid://cbleo5y71lbb3" path="res://scripts/shop.gd" id="1_viryw"]
+[ext_resource type="PackedScene" uid="uid://do10xi4fuhwb3" path="res://shop_item.tscn" id="2_blqjs"]
+[ext_resource type="Texture2D" uid="uid://btqdbmph7dnw0" path="res://gfx/shopbgplaceholder.png" id="2_e7rdd"]
 
-[node name="Shop" type="Node" unique_id=1039736518]
+[node name="Shop" type="Control" unique_id=1626058450 node_paths=PackedStringArray("card_container")]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_viryw")
+shop_item = ExtResource("2_blqjs")
+card_container = NodePath("HBoxContainer")
+
+[node name="ShopBG" type="TextureRect" parent="." unique_id=29617690]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_e7rdd")
 
 [node name="ShopPlaceholderLabel" type="Label" parent="." unique_id=1326490075]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -84.0
-offset_right = 84.0
-offset_bottom = 45.0
+layout_mode = 1
+anchors_preset = -1
+offset_left = 765.0
+offset_top = 18.0
+offset_right = 1117.0
+offset_bottom = 160.0
 grow_horizontal = 2
 text = "Shop"
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="." unique_id=1982658854]
-anchors_preset = 7
-anchor_left = 0.5
+layout_mode = 1
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -66.0
-offset_top = -75.0
-offset_right = 66.0
+offset_left = 883.0
+offset_top = 944.0
+offset_right = 1015.0
+offset_bottom = 1019.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "BACK"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=694724223]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 1906.0
+offset_bottom = 314.0
+alignment = 1
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
